@@ -1,7 +1,6 @@
-﻿
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 
-Public Class Form1
+Public Class frmMonitor
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim myConn As New SqlConnection("User ID=MonitorAHK;Password=Monitor123;Initial Catalog=nice_storage_center;" &
@@ -38,7 +37,7 @@ SELECT iLoggerID AS 'LOGGER', SUM(ISNULL(CAST(iCount AS BIGINT), 0)) AS 'PENDIEN
             Dim ds As New DataSet
             da.Fill(ds, "vwScBacklog")
 
-            Me.DataGridView1.DataSource = ds.Tables("vwScBacklog")
+            Me.backlogGridView.DataSource = ds.Tables("vwScBacklog")
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -52,7 +51,7 @@ SELECT iLoggerID AS 'LOGGER', SUM(ISNULL(CAST(iCount AS BIGINT), 0)) AS 'PENDIEN
         MsgBox("BACKLOG")
     End Sub
 
-    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
+    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles tabBacklog.Click
 
     End Sub
 End Class
